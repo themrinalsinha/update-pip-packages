@@ -9,4 +9,6 @@ packages = tqdm([pkg.split(' ')[0] for pkg in packages.split('\n') if pkg])
 
 for pkg in packages:
     packages.set_description('Updating: {}'.format(pkg))
-    check_output(['sudo', '-H', 'pip3', 'install', '-Uq', '{}'.format(pkg)])
+    try:
+        check_output(['sudo', '-H', 'pip3', 'install', '-Uq', '{}'.format(pkg)])
+    except: print('Error occured in : {}'.format(pkg))
